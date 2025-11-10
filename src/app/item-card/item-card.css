@@ -1,24 +1,46 @@
 .card {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 260px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
-  transition: transform 0.2s;
-  width: 280px;
+  transition: 0.3s ease;
+  border: 3px solid transparent;
   text-align: center;
 }
+
 .card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
 }
-.card img {
+
+.car-image {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #eee;
 }
-.card-info {
+
+.info {
   padding: 1rem;
 }
+
 .price {
   font-weight: bold;
-  color: #0a74da;
+  color: #004aad;
+}
+
+.badge {
+  background-color: #0078ff;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  display: inline-block;
+}
+
+.new {
+  border-color: #0078ff;
 }

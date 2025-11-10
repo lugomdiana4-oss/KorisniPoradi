@@ -1,8 +1,11 @@
+.list-container {
+  text-align: center;
+  margin: 2rem auto;
+}
+
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
   justify-content: center;
-  padding: 2rem;
-  background-color: #f5f7fa;
+  gap: 1.5rem;
 }

@@ -1,3 +1,9 @@
-<div class="list">
-  <app-item-card *ngFor="let car of cars" [car]="car"></app-item-card>
+<div class="list-container">
+  <h2>Список автомобілів</h2>
+  <div class="list">
+    <app-item-card
+      *ngFor="let car of cars"
+      [car]="car">
+    </app-item-card>
+  </div>
 </div>

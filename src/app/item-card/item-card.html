@@ -1,8 +1,11 @@
-<div class="card">
-  <img [src]="car.image" [alt]="car.model" />
+<div class="card" [ngClass]="{ 'new': car.year >= 2022 }">
+  <img class="car-image" [src]="car.image" [alt]="car.model" />
+
   <div class="card-info">
     <h2>{{ car.brand }} {{ car.model }}</h2>
     <p>Рік: {{ car.year }}</p>
     <p class="price">{{ car.price }}</p>
+
+    <div *ngIf="car.year >= 2022" class="badge">🔥 Новинка</div>
   </div>
 </div>
