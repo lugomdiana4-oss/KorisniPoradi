@@ -1,4 +1,5 @@
-.content {
+main {
   min-height: 80vh;
-  padding: 2rem;
+  padding: 20px;
+  background-color: #eef2f7;
 }
