@@ -7,5 +7,9 @@
     <p class="price">{{ car.price }}</p>
 
     <div *ngIf="car.year >= 2022" class="badge">🔥 Новинка</div>
+
+    <button class="details-btn" (click)="onSelect()">
+      Детальніше
+    </button>
   </div>
 </div>

@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ItemCard } from '../item-card/item-card';
 import { Car } from '../shared/models/car.model';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCard],
+  imports: [CommonModule, FormsModule, ItemCard],
   templateUrl: './item-list.html',
   styleUrls: ['./item-list.css']
 })
 export class ItemsList {
+  search: string = '';
+
   cars: Car[] = [
     {
       id: 1,
@@ -37,4 +40,16 @@ export class ItemsList {
       price: '$49,000'
     }
   ];
+
+  get filteredCars(): Car[] {
+    return this.cars.filter(car =>
+      (car.brand + ' ' + car.model)
+        .toLowerCase()
+        .includes(this.search.toLowerCase())
+    );
+  }
+
+  onCarSelected(car: Car) {
+    console.log('🚗 Обраний автомобіль:', car);
+  }
 }
