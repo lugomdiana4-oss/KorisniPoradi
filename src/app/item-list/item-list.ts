@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ItemCard } from '../item-card/item-card';
 import { Car } from '../shared/models/car.model';
 import { DataService } from '../shared/services/data.service';
@@ -12,23 +13,29 @@ import { DataService } from '../shared/services/data.service';
   templateUrl: './item-list.html',
   styleUrls: ['./item-list.css']
 })
-export class ItemsList implements OnInit {
+export class ItemsList implements OnInit, OnDestroy {
 
   search: string = '';
   cars: Car[] = [];
+  private sub!: Subscription;
 
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.cars = this.dataService.getItems();
+    this.sub = this.dataService.cars$.subscribe(cars => {
+      this.cars = cars;
+    });
+    this.dataService.filterItems('');
   }
 
-  get filteredCars(): Car[] {
-    return this.cars.filter(car =>
-      (car.brand + ' ' + car.model)
-        .toLowerCase()
-        .includes(this.search.toLowerCase())
-    );
+  onSearchChange(): void {
+    this.dataService.filterItems(this.search);
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
   onCarSelected(car: Car) {

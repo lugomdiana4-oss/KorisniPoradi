@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Car } from '../models/car.model';
 
 @Injectable({
@@ -33,7 +34,20 @@ export class DataService {
     }
   ];
 
-  getItems(): Car[] {
-    return this.cars;
+  private carsSubject = new BehaviorSubject<Car[]>(this.cars);
+
+  cars$ = this.carsSubject.asObservable();
+
+  getItems(): Observable<Car[]> {
+    return of(this.cars);
+  }
+
+  filterItems(query: string): void {
+    const filtered = this.cars.filter(car =>
+      (car.brand + ' ' + car.model)
+        .toLowerCase()
+        .includes(query.toLowerCase())
+    );
+    this.carsSubject.next(filtered);
   }
 }

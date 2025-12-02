@@ -1,14 +1,16 @@
 <div class="list-container">
   <h2>Список автомобілів</h2>
+
   <input
     type="text"
     placeholder="Пошук за брендом або моделлю..."
     [(ngModel)]="search"
+    (input)="onSearchChange()"
     class="search-input">
 
   <div class="list">
     <app-item-card
-      *ngFor="let car of filteredCars"
+      *ngFor="let car of cars"
       [car]="car"
       (select)="onCarSelected($event)">
     </app-item-card>
