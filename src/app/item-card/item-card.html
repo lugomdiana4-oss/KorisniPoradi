@@ -8,8 +8,8 @@
 
     <div *ngIf="car.year >= 2022" class="badge">🔥 Новинка</div>
 
-    <button class="details-btn" (click)="onSelect()">
+    <a class="details-btn" [routerLink]="['/items', car.id]">
       Детальніше
-    </button>
+    </a>
   </div>
 </div>

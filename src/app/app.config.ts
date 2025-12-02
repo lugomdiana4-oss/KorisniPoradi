@@ -1,11 +1,9 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { Layout } from './layout/layout';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter([
-      { path: '', component: Layout }
-    ])
+    provideRouter(routes)
   ]
 };

@@ -1,0 +1,15 @@
+.details-container {
+  padding: 20px;
+}
+
+.details-image {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.back-btn {
+  margin-top: 20px;
+  display: inline-block;
+  text-decoration: none;
+  color: blue;
+}

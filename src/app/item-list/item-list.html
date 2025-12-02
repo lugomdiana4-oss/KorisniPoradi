@@ -6,13 +6,13 @@
     placeholder="Пошук за брендом або моделлю..."
     [(ngModel)]="search"
     (input)="onSearchChange()"
-    class="search-input">
+    class="search-input"
+  />
 
   <div class="list">
     <app-item-card
       *ngFor="let car of cars"
-      [car]="car"
-      (select)="onCarSelected($event)">
+      [car]="car">
     </app-item-card>
   </div>
 </div>

@@ -37,8 +37,4 @@ export class ItemsList implements OnInit, OnDestroy {
       this.sub.unsubscribe();
     }
   }
-
-  onCarSelected(car: Car) {
-    console.log('🚗 Обраний автомобіль:', car);
-  }
 }
