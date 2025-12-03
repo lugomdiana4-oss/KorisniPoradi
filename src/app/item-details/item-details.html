@@ -1,23 +1,24 @@
 <div *ngIf="car" class="details-container">
-
   <h1>{{ car.brand }} {{ car.model }}</h1>
 
-  <img [src]="car.image" [alt]="car.model" class="details-image">
+  <div class="top-row">
+    <img [src]="car.image" [alt]="car.model" class="details-image">
 
-  <div class="info-block">
-    <p><strong>Рік випуску:</strong> {{ car.year }}</p>
-    <p><strong>Ціна:</strong> {{ car.price }}</p>
-    <p><strong>Тип двигуна:</strong> {{ car.engine }}</p>
-    <p><strong>Потужність:</strong> {{ car.horsepower }} hp</p>
-    <p><strong>Пробіг:</strong> {{ car.mileage }}</p>
-    <p><strong>Колір:</strong> {{ car.color }}</p>
-    <p><strong>Трансмісія:</strong> {{ car.transmission }}</p>
-    <p><strong>Тип приводу:</strong> {{ car.driveType }}</p>
+    <div class="info-block">
+      <p><strong>Рік випуску:</strong> {{ car.year }}</p>
+      <p><strong>Ціна:</strong> {{ car.price }}</p>
+      <p><strong>Тип двигуна:</strong> {{ car.engine || 'Н/д' }}</p>
+      <p><strong>Потужність:</strong> {{ car.horsepower ? (car.horsepower + ' к.с.') : 'Н/д' }}</p>
+      <p><strong>Пробіг:</strong> {{ car.mileage ? (car.mileage + ' км') : 'Н/д' }}</p>
+      <p><strong>Колір:</strong> {{ car.color || 'Н/д' }}</p>
+      <p><strong>Трансмісія:</strong> {{ car.transmission || 'Н/д' }}</p>
+      <p><strong>Тип приводу:</strong> {{ car.driveType || 'Н/д' }}</p>
+    </div>
   </div>
 
   <div class="description">
     <h3>Опис</h3>
-    <p>{{ car.description }}</p>
+    <p>{{ car.description | truncate:350 }}</p>
   </div>
 
   <a routerLink="/items" class="back-btn">← Назад до списку</a>

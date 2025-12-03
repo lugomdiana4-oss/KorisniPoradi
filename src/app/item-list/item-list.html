@@ -11,7 +11,7 @@
 
   <div class="list">
     <app-item-card
-      *ngFor="let car of cars"
+      *ngFor="let car of (cars$ | async)"
       [car]="car">
     </app-item-card>
   </div>
