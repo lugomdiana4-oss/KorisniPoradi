@@ -1,9 +1,7 @@
+
 import { Routes } from '@angular/router';
-import { ItemsList } from './item-list/item-list';
-import { ItemDetails } from './item-details/item-details';
+import { Layout } from './layout/layout';
 
 export const routes: Routes = [
-  { path: 'items', component: ItemsList },
-  { path: 'items/:id', component: ItemDetails },
-  { path: '', redirectTo: 'items', pathMatch: 'full' }
+  { path: '', component: Layout }
 ];

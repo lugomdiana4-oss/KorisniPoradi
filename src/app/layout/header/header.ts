@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.css']
 })
 export class Header {
-  title = '🚗 Автомобілі — каталог 2025';
+  title = 'Корисні поради для повсякденного життя';
 }

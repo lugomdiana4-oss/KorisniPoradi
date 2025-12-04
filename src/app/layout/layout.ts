@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
-import { ItemsList } from '../item-list/item-list';
 
 @Component({
   selector: 'app-layout',
@@ -11,7 +10,6 @@ import { ItemsList } from '../item-list/item-list';
     RouterOutlet,
     Header,
     Footer,
-    ItemsList
   ],
   templateUrl: './layout.html',
   styleUrls: ['./layout.css']
