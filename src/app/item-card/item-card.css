@@ -34,3 +34,29 @@
   font-size: 12px;
   color: #666;
 }
+.card {
+  border-radius: 12px;
+  padding: 15px;
+  background: #fff;
+  border: 2px solid #ccc;
+  margin: 15px;
+  width: 280px;
+}
+
+.card.health {
+  border-color: #3cb371;
+  background: #eaffea;
+}
+
+.card.organize {
+  border-color: #1e90ff;
+  background: #e7f1ff;
+}
+
+.badge {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: gold;
+  border-radius: 6px;
+  display: inline-block;
+}

@@ -1,6 +1,16 @@
-<div class="card">
-  <img [src]="item.image" alt="{{ item.title }}" class="card-img">
+<div class="card"
+     [ngClass]="{
+       'health': item.category === 'Здоровʼя',
+       'organize': item.category === 'Організація'
+     }">
+
+  <img [src]="item.image" alt="{{ item.title }}">
+
   <h3>{{ item.title }}</h3>
   <p>{{ item.description }}</p>
   <span class="category">{{ item.category }}</span>
+
+  <div class="badge" *ngIf="item.category === 'Здоровʼя'">
+    ⭐ Рекомендовано!
+  </div>
 </div>
