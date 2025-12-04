@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
+import { ItemsListComponent } from '../items-list/items-list';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [
-    RouterOutlet,
     Header,
     Footer,
+    ItemsListComponent
   ],
   templateUrl: './layout.html',
   styleUrls: ['./layout.css']
