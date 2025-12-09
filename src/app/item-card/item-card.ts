@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Advice } from '../shared/models/advice.model';
 
@@ -11,4 +11,10 @@ import { Advice } from '../shared/models/advice.model';
 })
 export class ItemCardComponent {
   @Input() item!: Advice;
+
+  @Output() select = new EventEmitter<Advice>();
+
+  onSelect() {
+    this.select.emit(this.item);
+  }
 }

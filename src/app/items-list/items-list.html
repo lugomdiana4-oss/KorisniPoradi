@@ -1,6 +1,13 @@
+<div class="search-box">
+  <input type="text"
+         placeholder="Пошук..."
+         [(ngModel)]="searchTerm">
+</div>
+
 <div class="items-container">
   <app-item-card
-    *ngFor="let item of adviceList"
-    [item]="item">
+    *ngFor="let item of filteredList"
+    [item]="item"
+    (select)="onItemSelected(item)">
   </app-item-card>
 </div>

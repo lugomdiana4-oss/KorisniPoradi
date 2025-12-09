@@ -2,15 +2,19 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemCardComponent } from '../item-card/item-card';
 import { Advice } from '../shared/models/advice.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-items-list',
   standalone: true,
-  imports: [CommonModule, ItemCardComponent],
+  imports: [CommonModule, FormsModule, ItemCardComponent],
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
 export class ItemsListComponent {
+
+  searchTerm: string = '';
+
   adviceList: Advice[] = [
     {
       id: 1,
@@ -34,4 +38,14 @@ export class ItemsListComponent {
       image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb'
     }
   ];
+
+  get filteredList() {
+    return this.adviceList.filter(a =>
+      a.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+
+  onItemSelected(item: Advice) {
+    console.log('Обраний елемент:', item);
+  }
 }
