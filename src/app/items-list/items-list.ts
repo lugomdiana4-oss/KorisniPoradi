@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ItemCardComponent } from '../item-card/item-card';
 import { Advice } from '../shared/models/advice.model';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../shared/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-items-list',
@@ -12,21 +13,33 @@ import { DataService } from '../shared/data.service';
   templateUrl: './items-list.html',
   styleUrls: ['./items-list.css']
 })
-export class ItemsListComponent implements OnInit {
+export class ItemsListComponent implements OnInit, OnDestroy {
 
   searchTerm: string = '';
   adviceList: Advice[] = [];
 
+  private subscription!: Subscription;
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.adviceList = this.dataService.getItems();
+    this.subscription = this.dataService.items$.subscribe(items => {
+      this.adviceList = items;
+    });
+
+    this.dataService.getItems().subscribe(items => {
+      this.adviceList = items;
+    });
   }
 
-  get filteredList() {
-    return this.adviceList.filter(a =>
-      a.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  onSearch() {
+    this.dataService.filterItems(this.searchTerm);
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   onItemSelected(item: Advice) {

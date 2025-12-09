@@ -1,12 +1,13 @@
 <div class="search-box">
   <input type="text"
          placeholder="Пошук..."
-         [(ngModel)]="searchTerm">
+         [(ngModel)]="searchTerm"
+         (ngModelChange)="onSearch()">
 </div>
 
 <div class="items-container">
   <app-item-card
-    *ngFor="let item of filteredList"
+    *ngFor="let item of adviceList"
     [item]="item"
     (select)="onItemSelected(item)">
   </app-item-card>

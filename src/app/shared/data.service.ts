@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Advice } from './models/advice.model';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,19 @@ export class DataService {
       image: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb'
     }
   ];
+  private itemsSubject = new BehaviorSubject<Advice[]>(this.adviceList);
 
-  getItems(): Advice[] {
-    return this.adviceList;
+  items$ = this.itemsSubject.asObservable();
+
+  getItems(): Observable<Advice[]> {
+    return of(this.adviceList);
+  }
+
+  filterItems(search: string) {
+    const filtered = this.adviceList.filter(item =>
+      item.title.toLowerCase().includes(search.toLowerCase())
+    );
+
+    this.itemsSubject.next(filtered);
   }
 }
